@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bacha Eshetu — CV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #13131e;
+      --surface2: #1a1a2e;
+      --border: rgba(255,255,255,0.08);
+      --accent: #7c6ef5;
+      --accent-light: #a89cf5;
+      --accent-glow: rgba(124,110,245,0.15);
+      --green: #4ade80;
+      --green-glow: rgba(74,222,128,0.12);
+      --text: #e8e8f0;
+      --muted: rgba(255,255,255,0.55);
+      --subtle: rgba(255,255,255,0.3);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative;
+      padding: 60px 48px 48px;
+      border-bottom: 0.5px solid var(--border);
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: -120px; left: -120px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(124,110,245,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; right: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(74,222,128,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+
+    .available-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--green-glow);
+      border: 0.5px solid rgba(74,222,128,0.25);
+      border-radius: 20px;
+      padding: 5px 13px;
+      font-size: 11px;
+      color: var(--green);
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      margin-bottom: 16px;
+    }
+    .available-badge .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    h1 {
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    h1 span {
+      background: linear-gradient(135deg, #7c6ef5, #a78bfa, #c4b5fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .tagline {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .contact-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: 8px;
+      padding: 5px 12px;
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .contact-chip:hover { border-color: var(--accent); color: var(--accent-light); }
+    .contact-chip svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+    /* QR / Download area */
+    .header-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .download-btn:hover { opacity: 0.88; }
+    .download-btn svg { width: 15px; height: 15px; }
+
+    .stat-chips {
+      display: flex;
+      gap: 8px;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .stat-chip {
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 16px;
+      text-align: right;
+    }
+    .stat-chip .val {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .stat-chip .lbl {
+      font-size: 11px;
+      color: var(--subtle);
+      margin-top: 1px;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* ── SECTION ── */
+    .section { margin-bottom: 40px; }
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 0.5px;
+      background: var(--border);
+    }
+
+    /* ── SUMMARY ── */
+    .summary-box {
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-left: 2px solid var(--accent);
+      border-radius: 0 12px 12px 0;
+      padding: 18px 20px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* ── EXPERIENCE / EDUCATION CARDS ── */
+    .entry {
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 12px;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+    .entry:hover { border-color: rgba(124,110,245,0.3); }
+
+    .entry-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 4px;
+    }
+    .entry-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+    }
+    .entry-date {
+      font-size: 11px;
+      color: var(--subtle);
+      background: rgba(255,255,255,0.05);
+      border-radius: 6px;
+      padding: 3px 8px;
+      white-space: nowrap;
+      margin-left: 12px;
+      flex-shrink: 0;
+    }
+    .entry-sub {
+      font-size: 12px;
+      color: var(--accent-light);
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    .entry-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .entry-bullets li {
+      font-size: 13px;
+      color: var(--muted);
+      padding-left: 14px;
+      position: relative;
+    }
+    .entry-bullets li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* ── PROJECTS ── */
+    .project-card {
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 12px;
+      transition: border-color 0.2s;
+    }
+    .project-card:hover { border-color: rgba(124,110,245,0.3); }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 6px;
+    }
+    .project-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+    }
+    .project-links-row {
+      display: flex;
+      gap: 6px;
+      flex-shrink: 0;
+      margin-left: 12px;
+    }
+    .proj-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      color: var(--accent-light);
+      text-decoration: none;
+      background: var(--accent-glow);
+      border: 0.5px solid rgba(124,110,245,0.2);
+      border-radius: 6px;
+      padding: 3px 9px;
+      transition: background 0.2s;
+    }
+    .proj-link-btn:hover { background: rgba(124,110,245,0.25); }
+    .proj-link-btn svg { width: 11px; height: 11px; }
+
+    .project-type-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .project-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      font-size: 11px;
+      color: rgba(255,255,255,0.6);
+      border: 0.5px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 3px 10px;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar { position: sticky; top: 24px; }
+
+    .sidebar-card {
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+    .sidebar-title {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    /* Skills */
+    .skill-group { margin-bottom: 16px; }
+    .skill-group:last-child { margin-bottom: 0; }
+    .skill-group-name {
+      font-size: 11px;
+      color: var(--subtle);
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 5px; }
+    .skill-pill {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+    /* colored pills */
+    .sp-js  { background: rgba(247,223,30,0.12);  color: #f7df1e; }
+    .sp-ts  { background: rgba(49,120,198,0.15);  color: #3178c6; }
+    .sp-py  { background: rgba(55,118,171,0.15);  color: #3776ab; }
+    .sp-java{ background: rgba(234,86,36,0.12);   color: #ea5624; }
+    .sp-re  { background: rgba(97,219,251,0.12);  color: #61dbfb; }
+    .sp-nd  { background: rgba(104,160,99,0.15);  color: #68a063; }
+    .sp-ex  { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.65); }
+    .sp-pg  { background: rgba(51,103,145,0.15);  color: #336791; }
+    .sp-cv  { background: rgba(255,100,100,0.12); color: #ff6464; }
+    .sp-tf  { background: rgba(255,144,0,0.12);   color: #ff9000; }
+    .sp-np  { background: rgba(77,171,207,0.15);  color: #4dabcf; }
+    .sp-git { background: rgba(240,80,50,0.12);   color: #f05032; }
+    .sp-net { background: rgba(0,199,183,0.12);   color: #00c7b7; }
+    .sp-pu  { background: var(--accent-glow);     color: var(--accent-light); }
+
+    /* Languages */
+    .lang-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .lang-row:last-child { margin-bottom: 0; }
+    .lang-name { font-size: 13px; color: var(--text); font-weight: 500; }
+    .lang-level { font-size: 11px; color: var(--subtle); }
+    .lang-bar-wrap {
+      width: 100%;
+      height: 3px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 2px;
+      margin-top: 4px;
+      margin-bottom: 10px;
+    }
+    .lang-bar {
+      height: 3px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, #7c6ef5, #a78bfa);
+    }
+
+    /* Socials */
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 12px;
+      transition: background 0.2s, color 0.2s;
+      margin-bottom: 4px;
+    }
+    .social-link:hover {
+      background: var(--accent-glow);
+      color: var(--accent-light);
+    }
+    .social-icon {
+      width: 28px; height: 28px;
+      border-radius: 7px;
+      background: rgba(255,255,255,0.05);
+      border: 0.5px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .social-icon svg { width: 14px; height: 14px; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 0.5px solid var(--border);
+      padding: 20px 48px;
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer span { font-size: 12px; color: var(--subtle); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 720px) {
+      header { padding: 36px 24px 32px; }
+      .header-inner { grid-template-columns: 1fr; }
+      .header-right { align-items: flex-start; }
+      main { padding: 32px 24px; grid-template-columns: 1fr; }
+      h1 { font-size: 30px; }
+      footer { padding: 16px 24px; flex-direction: column; gap: 6px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="available-badge">
+        <span class="dot"></span>
+        Open to full-time opportunities
+      </div>
+      <h1>Bacha <span>Eshetu</span></h1>
+      <p class="tagline">Full Stack Developer &nbsp;·&nbsp; AI & ML Engineer &nbsp;·&nbsp; Ethiopia 🇪🇹</p>
+      <div class="contact-row">
+        <a class="contact-chip" href="mailto:bachaeshetu@gmail.com">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          bachaeshetu@gmail.com
+        </a>
+        <a class="contact-chip" href="tel:+251974791353">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.9 12.14 19.79 19.79 0 0 1 1.88 3.63 2 2 0 0 1 3.86 1.45h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.07a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.9 16.92z"/></svg>
+          +251 974 79 13 53
+        </a>
+        <a class="contact-chip" href="https://bachaeshetu-dev.netlify.app" target="_blank">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Portfolio
+        </a>
+        <a class="contact-chip" href="https://github.com/bacha67" target="_blank">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          bacha67
+        </a>
+        <a class="contact-chip" href="https://linkedin.com/in/bacha-eshetu" target="_blank">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <span class="contact-chip">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Bale Robe, Ethiopia
+        </span>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <a class="download-btn" href="Bacha_Eshetu_CV.pdf" download>
+        <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download PDF
+      </a>
+      <div class="stat-chips">
+        <div class="stat-chip">
+          <div class="val">BSc CS</div>
+          <div class="lbl">Madda Walabu Univ · 2026</div>
+        </div>
+        <div class="stat-chip">
+          <div class="val">Ethio Telecom</div>
+          <div class="lbl">Internship Experience</div>
+        </div>
+        <div class="stat-chip">
+          <div class="val">Full Stack + AI</div>
+          <div class="lbl">Core Expertise</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     MAIN
+══════════════════════════════════════════ -->
+<main>
+  <!-- ── LEFT COLUMN ── -->
+  <div>
+
+    <!-- SUMMARY -->
+    <div class="section">
+      <div class="section-label">Summary</div>
+      <div class="summary-box">
+        Full Stack Developer and AI/ML Engineer with a BSc in Computer Science
+        from Madda Walabu University (2026). Experienced in building
+        production-ready web applications, computer vision systems, and
+        AI-driven automation tools. Passionate about solving real problems
+        with clean, practical technology. Multilingual communicator in English,
+        Amharic, and Afaan Oromoo.
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="section">
+      <div class="section-label">Experience</div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-title">Network Configuration Assistant</div>
+          <span class="entry-date">2025 · Internship</span>
+        </div>
+        <div class="entry-sub">Ethio Telecom &nbsp;·&nbsp; Ethiopia</div>
+        <ul class="entry-bullets">
+          <li>Configured LAN infrastructure and network devices in a live enterprise environment</li>
+          <li>Performed IP subnetting, routing setup, and switching operations</li>
+          <li>Assisted with network monitoring and enterprise-level maintenance tasks</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="section">
+      <div class="section-label">Education</div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-title">BSc Computer Science</div>
+          <span class="entry-date">2022 – 2026</span>
+        </div>
+        <div class="entry-sub">Madda Walabu University &nbsp;·&nbsp; Ethiopia</div>
+        <ul class="entry-bullets">
+          <li>Capstone: Smart Attendance System using facial recognition and computer vision</li>
+          <li>Core focus areas: algorithms, data structures, networking, AI/ML, web development</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="section">
+      <div class="section-label">Projects</div>
+
+      <div class="project-card">
+        <div class="project-top">
+          <div>
+            <div class="project-type-badge">Full Stack</div>
+            <div class="project-name">Classroom Management System</div>
+          </div>
+          <div class="project-links-row">
+            <a class="proj-link-btn" href="#" target="_blank">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Live
+            </a>
+            <a class="proj-link-btn" href="https://github.com/bacha67" target="_blank">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <p class="project-desc">PERN stack CRUD platform with JWT authentication and role-based access control for Admin, Teacher, and Student roles. Production-focused admin workflow with clean UX.</p>
+        <div class="tag-row">
+          <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">PostgreSQL</span><span class="tag">JWT</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-top">
+          <div>
+            <div class="project-type-badge">ML / Computer Vision</div>
+            <div class="project-name">Smart Attendance System</div>
+          </div>
+          <div class="project-links-row">
+            <a class="proj-link-btn" href="https://github.com/bacha67" target="_blank">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <p class="project-desc">Face-recognition attendance system using MTCNN and InceptionResnetV1 (FaceNet) achieving 80%+ real-time identification accuracy. University capstone project at Madda Walabu University.</p>
+        <div class="tag-row">
+          <span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">Flask</span><span class="tag">CNN</span><span class="tag">FaceNet</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-top">
+          <div>
+            <div class="project-type-badge">ML / Neural Network</div>
+            <div class="project-name">Handwritten Digit Recognition</div>
+          </div>
+          <div class="project-links-row">
+            <a class="proj-link-btn" href="https://github.com/bacha67" target="_blank">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <p class="project-desc">Neural network pipeline trained on MNIST dataset for digit classification with full preprocessing, model training, evaluation, and result visualization pipeline.</p>
+        <div class="tag-row">
+          <span class="tag">Python</span><span class="tag">TensorFlow</span><span class="tag">NumPy</span><span class="tag">Keras</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-top">
+          <div>
+            <div class="project-type-badge">Automation / AI</div>
+            <div class="project-name">Ethio Fresh Jobs Bot</div>
+          </div>
+          <div class="project-links-row">
+            <a class="proj-link-btn" href="https://github.com/bacha67/job-search-dashboard-" target="_blank">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <p class="project-desc">AI-powered Telegram job filtering bot using Groq/Llama 3.3 70B with automated GitHub Actions pipeline. Serves a 30,000+ follower community with smart IT/CS job scoring.</p>
+        <div class="tag-row">
+          <span class="tag">Node.js</span><span class="tag">Groq API</span><span class="tag">Llama 3.3</span><span class="tag">Telegram Bot API</span><span class="tag">GitHub Actions</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end left col -->
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+
+    <!-- SKILLS -->
+    <div class="sidebar-card">
+      <div class="sidebar-title">Skills</div>
+
+      <div class="skill-group">
+        <div class="skill-group-name">Frontend</div>
+        <div class="skill-pills">
+          <span class="skill-pill sp-re">React</span>
+          <span class="skill-pill sp-js">JavaScript</span>
+          <span class="skill-pill sp-ts">TypeScript</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-name">Backend</div>
+        <div class="skill-pills">
+          <span class="skill-pill sp-nd">Node.js</span>
+          <span class="skill-pill sp-ex">Express</span>
+          <span class="skill-pill sp-java">Java</span>
+          <span class="skill-pill sp-pu">REST APIs</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-name">Database</div>
+        <div class="skill-pills">
+          <span class="skill-pill sp-pg">PostgreSQL</span>
+          <span class="skill-pill sp-pu">SQL</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-name">AI / ML</div>
+        <div class="skill-pills">
+          <span class="skill-pill sp-py">Python</span>
+          <span class="skill-pill sp-cv">OpenCV</span>
+          <span class="skill-pill sp-tf">TensorFlow</span>
+          <span class="skill-pill sp-np">NumPy</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-name">Networking</div>
+        <div class="skill-pills">
+          <span class="skill-pill sp-pu">LAN</span>
+          <span class="skill-pill sp-pu">Routing</span>
+          <span class="skill-pill sp-pu">Subnetting</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-name">Tools</div>
+        <div class="skill-pills">
+          <span class="skill-pill sp-git">Git</span>
+          <span class="skill-pill sp-ex">GitHub</span>
+          <span class="skill-pill sp-net">Netlify</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- LANGUAGES -->
+    <div class="sidebar-card">
+      <div class="sidebar-title">Languages</div>
+
+      <div>
+        <div class="lang-row">
+          <span class="lang-name">Amharic</span>
+          <span class="lang-level">Native</span>
+        </div>
+        <div class="lang-bar-wrap"><div class="lang-bar" style="width:100%"></div></div>
+
+        <div class="lang-row">
+          <span class="lang-name">Afaan Oromoo</span>
+          <span class="lang-level">Native</span>
+        </div>
+        <div class="lang-bar-wrap"><div class="lang-bar" style="width:100%"></div></div>
+
+        <div class="lang-row">
+          <span class="lang-name">English</span>
+          <span class="lang-level">Professional</span>
+        </div>
+        <div class="lang-bar-wrap"><div class="lang-bar" style="width:85%"></div></div>
+      </div>
+    </div>
+
+    <!-- SOCIALS -->
+    <div class="sidebar-card">
+      <div class="sidebar-title">Connect</div>
+
+      <a class="social-link" href="https://github.com/bacha67" target="_blank">
+        <div class="social-icon">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        </div>
+        github.com/bacha67
+      </a>
+
+      <a class="social-link" href="https://linkedin.com/in/bacha-eshetu" target="_blank">
+        <div class="social-icon">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </div>
+        Bacha Eshetu
+      </a>
+
+      <a class="social-link" href="https://t.me/Binary114" target="_blank">
+        <div class="social-icon">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        </div>
+        @Binary114
+      </a>
+
+      <a class="social-link" href="https://bachaeshetu-dev.netlify.app" target="_blank">
+        <div class="social-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        Portfolio Site
+      </a>
+
+      <a class="social-link" href="https://tiktok.com/@Ethio_Fresh_Jobs" target="_blank">
+        <div class="social-icon">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.27 8.27 0 0 0 4.84 1.56V6.79a4.85 4.85 0 0 1-1.07-.1z"/></svg>
+        </div>
+        @Ethio_Fresh_Jobs · 30K+
+      </a>
+    </div>
+
+  </aside>
+</main>
+
+<footer>
+  <span>© 2026 Bacha Eshetu · All rights reserved</span>
+  <span>Last updated: June 2026</span>
+</footer>
+
+</body>
+</html>
